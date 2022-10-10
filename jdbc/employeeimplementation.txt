@@ -1,0 +1,89 @@
+package com.emp;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import com.entity.employee;
+
+public class employeeemp implementation implements Employee
+{
+	public List<employee> viewemployee() throws ClassNotFoundException, SQLException{
+		ArrayList<employee>employeelist=new ArrayList<employee>();
+        Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Monika@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("select * from employee");
+        ResultSet rs=ps.executeQuery();
+		
+		while(rs.next())
+        {
+        employee e=new employee();
+                p.setemployeeNo(rs.getInt(1));
+                p.setemployeename(rs.getString(2));
+                p.setDepartmentname(rs.getString(3));
+                p.setAddress(rs.getString(4));
+                p.setphno(rs.getLong(5));
+                employeelist.add(e);
+          }
+		return employeelist;
+	}
+
+	@Override
+	public List<employee> insertemployee(employee e) throws ClassNotFoundException, SQLException {
+		List<employee> employeelist=new ArrayList<employee>();
+		Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Monika@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("Insert into employee values (?,?,?,?,?)");
+        ps.setInt(1, p.getemployeeNo());
+        ps.setString(2, p.getemployeename());
+        ps.setString(3, p.getDepartmentname());
+        ps.setString(4, p.getAddress());
+        ps.setLong(5, p.getphno());
+        ps.executeUpdate();
+		return employeelist;
+		
+	}
+
+	@Override
+	public void updateemployee(employee e) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+        //create the connection
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Kavi@123");
+        //create the statement
+        PreparedStatement ps=con.prepareStatement("update employee set employeename=?,Departmentname=?,Address=?,phno=? where employeeNo=?");
+        ps.setString(1, p.getemployeename());
+        ps.setString(2, p.getDepartmentname());
+        ps.setString(3,p.getAddress());
+        ps.setLong(4, p.getphno());
+        ps.setInt(5,p.getemployeeNo());
+        ps.executeUpdate();
+	}
+
+	@Override
+	public void deleteemployeerecords(employee e) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		//create the connection
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","Monika@123");
+		//create the statement
+		PreparedStatement ps=con.prepareStatement("delete from employee where employeeNo=?");
+		ps.setInt(1, p.getemployeeNo());
+		ps.executeUpdate();
+		
+	}
+
+}
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+D

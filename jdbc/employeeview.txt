@@ -1,0 +1,43 @@
+package view;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+import com.service.employeeservice;
+public class employeemain {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		String s;
+		System.out.println("1.View Data");
+		System.out.println("2.Insert Data");
+		System.out.println("3.Update Data");
+		System.out.println("4.delete Data");
+		do
+		{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the choice");
+		
+			int choice =sc.nextInt();
+			switch(choice)
+			{
+			case 1:
+				new employeeservice().viewdetails();
+				break;
+			case 2:
+				new employeeservice().insertemployeedetails();
+				break;
+			case 3:
+				new employeeservice().updateemployeedetails();
+				break;
+			case 4:
+				new employeeservice().deleteemployeerecords();
+				break;
+			}
+				System.out.println("do u want to continue");
+				s=sc.next();
+			
+
+	}
+
+		while(s.equals("yes"));
+	}
+}

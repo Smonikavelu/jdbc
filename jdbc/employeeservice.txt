@@ -1,0 +1,71 @@
+package com.service;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+import com.dao.employeeempimplementation;
+import com.entity.employee;
+
+public class employeeservice {
+		public void viewdetails() throws ClassNotFoundException, SQLException
+		{
+			List<employee>employeelist=new employeeemp implementation().viewemployee();
+			for(employee e:employeelist)
+			{
+				
+				System.out.print(p.getemployeeNo()+'\t');
+				System.out.print(p.getemployeename()+'\t');
+				System.out.print(p.getDepartmentname()+'\t');
+				System.out.println(p.getAddress()+'\t');
+				System.out.println(p.getphno()+'\t');
+			}
+		}
+		public void insertemployeedetails() throws ClassNotFoundException, SQLException {
+			Scanner sc=new Scanner(System.in);
+			System.out.println("enter the employeeno");
+			int employeeno=sc.nextInt();
+			System.out.println("enter the employee name");
+			String employee name=sc.next();
+			System.out.println("enter theDepartmentname");
+			String Department name=sc.next();
+			System.out.println("enter the Address");
+			String Address=sc.next();
+			System.out.println("enter the phone no");
+			Long Cno=sc.nextLong();
+			employee e=new employee();
+			e.setemployeeno(employeeno);
+			e.setemployee name(employee name);
+			e.setDepartmentname(Departmentname);
+			e.setAddress(Address);
+			e.setphno(pno);
+			new employeeemp implementation().insertemployee(e);
+		}
+	public void updateemployeedetails() throws ClassNotFoundException, SQLException {
+			Scanner sc=new Scanner(System.in);
+			System.out.println("enter the employee name");
+			String employee name=sc.next();
+			System.out.println("enter the Departmentname");
+			String diseasename=sc.next();
+			System.out.println("enter the Address");
+			String Address=sc.next();
+			System.out.println("enter phonet No");
+			Long Cno=sc.nextLong();
+			System.out.println("enter the employeeNo");
+			int employee=sc.nextInt();
+			employee  e=new employee();
+			e.setemployeename(employeename);
+			e.setDepartmentname(Departmentname);
+			e.setAddress(Address);
+			e.setphno(phno);
+			e.set employeeNo( employeeNo);
+			new employeeemp implementation().updateemployee(e);
+	}
+	public void deleteemployeerecords() throws ClassNotFoundException, SQLException {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter theemployeeNo");
+		intemployeeNo=sc.nextInt();
+	     employee e=new employee();
+	     e.setemployeeNo(employee No);
+		new employeeemp implementation().deleteemployeerecords(e);
+	}
+}

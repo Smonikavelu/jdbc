@@ -1,0 +1,13 @@
+package com.emp;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.entity.employee;
+
+public interface employeeemp {
+	public List<employee>viewemployee () throws ClassNotFoundException, SQLException;
+	public List<employee> insertemployee e(employee e) throws ClassNotFoundException, SQLException;
+	public void updateemployee(employee e) throws SQLException, ClassNotFoundException;
+	public void deleteemployeerecords(employee e) throws SQLException, ClassNotFoundException;
+}
